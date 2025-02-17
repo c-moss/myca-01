@@ -1,0 +1,27 @@
+import { CollectionConfig } from 'payload/types'
+
+const ImageAssets: CollectionConfig = {
+  slug: 'imageAssets',
+  upload: {
+    staticURL: '/media',
+    staticDir: 'media',
+    imageSizes: [
+      {
+        name: 'tile',
+        width: 150,
+        height: 150,
+        position: 'centre',
+      },
+    ],
+    adminThumbnail: 'tile',
+    mimeTypes: ['image/*'],
+  },
+  fields: [
+    {
+      name: 'imageAltText',
+      type: 'text',
+    },
+  ],
+}
+
+export default ImageAssets
