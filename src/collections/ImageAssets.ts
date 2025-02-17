@@ -9,13 +9,19 @@ export const ImageAssets: CollectionConfig = {
     staticDir: 'media',
     imageSizes: [
       {
+        name: 'thumbnail',
+        width: 50,
+        height: 50,
+        position: 'centre',
+      },
+      {
         name: 'tile',
         width: 150,
         height: 150,
         position: 'centre',
       },
     ],
-    adminThumbnail: 'tile',
+    adminThumbnail: 'thumbnail',
     mimeTypes: ['image/*'],
   },
   fields: [
