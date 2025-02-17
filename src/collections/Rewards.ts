@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-export const Media: CollectionConfig = {
+export const Rewards: CollectionConfig = {
   slug: 'rewards',
   fields: [
     {
@@ -21,6 +21,6 @@ export const Media: CollectionConfig = {
       type: 'text',
       label: 'URL',
       required: true,
-    }
-  ]
+    },
+  ],
 }

@@ -1,7 +1,10 @@
-import { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
 
-const ImageAssets: CollectionConfig = {
+export const ImageAssets: CollectionConfig = {
   slug: 'imageAssets',
+  access: {
+    read: () => true,
+  },
   upload: {
     staticDir: 'media',
     imageSizes: [
@@ -19,8 +22,7 @@ const ImageAssets: CollectionConfig = {
     {
       name: 'imageAltText',
       type: 'text',
+      required: true,
     },
   ],
 }
-
-export default ImageAssets
