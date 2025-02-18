@@ -7,6 +7,7 @@ export const ImageAssets: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
+    description: 'A single image asset that can be used in various places throughout the app.',
   },
   upload: {
     staticDir: 'media',

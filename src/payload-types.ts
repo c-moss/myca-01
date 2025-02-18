@@ -79,6 +79,8 @@ export interface User {
   password?: string | null;
 }
 /**
+ * A single image asset that can be used in various places throughout the app.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "imageAssets".
  */
@@ -117,6 +119,8 @@ export interface ImageAsset {
   };
 }
 /**
+ * Defines the structure of a cards benefits page in the MYCA app. Represents either the Rewards page or the Membership page. Contains an arbitrary number of sections, each containing a list of image tiles.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "card-benefits".
  */
@@ -142,6 +146,8 @@ export interface CardBenefit {
   createdAt: string;
 }
 /**
+ * Represents a card product e.g. Centurion, Platinum, Gold, etc. Card product id should match the id used in the API.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "card-product".
  */
