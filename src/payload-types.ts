@@ -84,6 +84,7 @@ export interface User {
  */
 export interface ImageAsset {
   id: string;
+  name: string;
   imageAltText: string;
   updatedAt: string;
   createdAt: string;
@@ -127,9 +128,9 @@ export interface CardBenefit {
         'section-title': string;
         tile?:
           | {
-              image: string | ImageAsset;
               description: string;
               url: string;
+              image: string | ImageAsset;
               'card-products'?: (string | CardProduct)[] | null;
               id?: string | null;
             }[]
@@ -236,6 +237,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "imageAssets_select".
  */
 export interface ImageAssetsSelect<T extends boolean = true> {
+  name?: T;
   imageAltText?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -286,9 +288,9 @@ export interface CardBenefitsSelect<T extends boolean = true> {
         tile?:
           | T
           | {
-              image?: T;
               description?: T;
               url?: T;
+              image?: T;
               'card-products'?: T;
               id?: T;
             };

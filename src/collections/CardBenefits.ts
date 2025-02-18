@@ -2,6 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const CardBenefits: CollectionConfig = {
   slug: 'card-benefits',
+  admin: {
+    useAsTitle: 'benefits-type',
+  },
   fields: [
     {
       name: 'benefits-type',
@@ -36,13 +39,6 @@ export const CardBenefits: CollectionConfig = {
           label: 'Tile',
           fields: [
             {
-              name: 'image',
-              type: 'upload',
-              label: 'Image',
-              relationTo: 'imageAssets',
-              required: true,
-            },
-            {
               name: 'description',
               type: 'text',
               label: 'Description',
@@ -52,6 +48,13 @@ export const CardBenefits: CollectionConfig = {
               name: 'url',
               type: 'text',
               label: 'URL',
+              required: true,
+            },
+            {
+              name: 'image',
+              type: 'upload',
+              label: 'Image',
+              relationTo: 'imageAssets',
               required: true,
             },
             {

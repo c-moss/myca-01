@@ -5,6 +5,9 @@ export const ImageAssets: CollectionConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    useAsTitle: 'name',
+  },
   upload: {
     staticDir: 'media',
     imageSizes: [
@@ -26,8 +29,15 @@ export const ImageAssets: CollectionConfig = {
   },
   fields: [
     {
+      name: 'name',
+      type: 'text',
+      label: 'Name',
+      required: true,
+    },
+    {
       name: 'imageAltText',
       type: 'text',
+      label: 'Image Alt Text',
       required: true,
     },
   ],
