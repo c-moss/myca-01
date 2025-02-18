@@ -14,6 +14,7 @@ export interface Config {
     users: User;
     imageAssets: ImageAsset;
     'card-rewards': CardReward;
+    'card-product': CardProduct;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -23,6 +24,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     imageAssets: ImageAssetsSelect<false> | ImageAssetsSelect<true>;
     'card-rewards': CardRewardsSelect<false> | CardRewardsSelect<true>;
+    'card-product': CardProductSelect<false> | CardProductSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -122,18 +124,30 @@ export interface CardReward {
   'card-type': string;
   'rewards-section'?:
     | {
-        'category-name': string;
-        'tile-list'?:
+        'section-name': string;
+        tile?:
           | {
               image: string | ImageAsset;
               description: string;
               url: string;
+              'card-products'?: (string | CardProduct)[] | null;
               id?: string | null;
             }[]
           | null;
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-product".
+ */
+export interface CardProduct {
+  id: string;
+  'card-product-name': string;
+  'card-product-id': string;
   updatedAt: string;
   createdAt: string;
 }
@@ -155,6 +169,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'card-rewards';
         value: string | CardReward;
+      } | null)
+    | ({
+        relationTo: 'card-product';
+        value: string | CardProduct;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -264,17 +282,28 @@ export interface CardRewardsSelect<T extends boolean = true> {
   'rewards-section'?:
     | T
     | {
-        'category-name'?: T;
-        'tile-list'?:
+        'section-name'?: T;
+        tile?:
           | T
           | {
               image?: T;
               description?: T;
               url?: T;
+              'card-products'?: T;
               id?: T;
             };
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-product_select".
+ */
+export interface CardProductSelect<T extends boolean = true> {
+  'card-product-name'?: T;
+  'card-product-id'?: T;
   updatedAt?: T;
   createdAt?: T;
 }

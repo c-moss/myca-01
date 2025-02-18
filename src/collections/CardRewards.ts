@@ -4,26 +4,20 @@ export const CardRewards: CollectionConfig = {
   slug: 'card-rewards',
   fields: [
     {
-      name: 'card-type',
-      type: 'text',
-      label: 'Card type',
-      required: true,
-    },
-    {
       name: 'rewards-section',
       type: 'array',
-      label: 'Rewards category',
+      label: 'Rewards section',
       fields: [
         {
-          name: 'category-name',
+          name: 'section-name',
           type: 'text',
-          label: 'Reward category name',
+          label: 'Reward section name',
           required: true,
         },
         {
-          name: 'tile-list',
+          name: 'tile',
           type: 'array',
-          label: 'Tile list',
+          label: 'Tile',
           fields: [
             {
               name: 'image',
@@ -43,6 +37,13 @@ export const CardRewards: CollectionConfig = {
               type: 'text',
               label: 'URL',
               required: true,
+            },
+            {
+              name: 'card-products',
+              type: 'relationship',
+              relationTo: 'card-product',
+              label: 'Card products',
+              hasMany: true,
             },
           ],
         },
