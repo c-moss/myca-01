@@ -13,7 +13,7 @@ export interface Config {
   collections: {
     users: User;
     imageAssets: ImageAsset;
-    'card-rewards': CardReward;
+    'card-benefits': CardBenefit;
     'card-product': CardProduct;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -23,7 +23,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     imageAssets: ImageAssetsSelect<false> | ImageAssetsSelect<true>;
-    'card-rewards': CardRewardsSelect<false> | CardRewardsSelect<true>;
+    'card-benefits': CardBenefitsSelect<false> | CardBenefitsSelect<true>;
     'card-product': CardProductSelect<false> | CardProductSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -117,14 +117,14 @@ export interface ImageAsset {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "card-rewards".
+ * via the `definition` "card-benefits".
  */
-export interface CardReward {
+export interface CardBenefit {
   id: string;
-  'card-type': string;
-  'rewards-section'?:
+  'benefits-type': 'card-rewards' | 'card-membership';
+  'benefits-section'?:
     | {
-        'section-name': string;
+        'section-title': string;
         tile?:
           | {
               image: string | ImageAsset;
@@ -167,8 +167,8 @@ export interface PayloadLockedDocument {
         value: string | ImageAsset;
       } | null)
     | ({
-        relationTo: 'card-rewards';
-        value: string | CardReward;
+        relationTo: 'card-benefits';
+        value: string | CardBenefit;
       } | null)
     | ({
         relationTo: 'card-product';
@@ -275,14 +275,14 @@ export interface ImageAssetsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "card-rewards_select".
+ * via the `definition` "card-benefits_select".
  */
-export interface CardRewardsSelect<T extends boolean = true> {
-  'card-type'?: T;
-  'rewards-section'?:
+export interface CardBenefitsSelect<T extends boolean = true> {
+  'benefits-type'?: T;
+  'benefits-section'?:
     | T
     | {
-        'section-name'?: T;
+        'section-title'?: T;
         tile?:
           | T
           | {

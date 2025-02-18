@@ -1,17 +1,33 @@
 import type { CollectionConfig } from 'payload'
 
-export const CardRewards: CollectionConfig = {
-  slug: 'card-rewards',
+export const CardBenefits: CollectionConfig = {
+  slug: 'card-benefits',
   fields: [
     {
-      name: 'rewards-section',
+      name: 'benefits-type',
+      type: 'select',
+      label: 'Benefits type',
+      options: [
+        {
+          label: 'Rewards',
+          value: 'card-rewards',
+        },
+        {
+          label: 'Membership',
+          value: 'card-membership',
+        },
+      ],
+      required: true,
+    },
+    {
+      name: 'benefits-section',
       type: 'array',
-      label: 'Rewards section',
+      label: 'Section',
       fields: [
         {
-          name: 'section-name',
+          name: 'section-title',
           type: 'text',
-          label: 'Reward section name',
+          label: 'Section title',
           required: true,
         },
         {

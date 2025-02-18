@@ -9,7 +9,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { ImageAssets } from './collections/ImageAssets'
-import { CardRewards } from './collections/CardRewards'
+import { CardBenefits } from './collections/CardBenefits'
 import { CardProduct } from './collections/CardProduct'
 
 const filename = fileURLToPath(import.meta.url)
@@ -22,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, ImageAssets, CardRewards, CardProduct],
+  collections: [Users, ImageAssets, CardBenefits, CardProduct],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
