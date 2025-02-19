@@ -37,10 +37,10 @@ export interface Config {
     defaultIDType: string;
   };
   globals: {
-    feature: Feature;
+    'feature-configuration': FeatureConfiguration;
   };
   globalsSelect: {
-    feature: FeatureSelect<false> | FeatureSelect<true>;
+    'feature-configuration': FeatureConfigurationSelect<false> | FeatureConfigurationSelect<true>;
   };
   locale: null;
   user: User & {
@@ -399,9 +399,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * Describes a set of configurable features within the application. Features can be disabled for specific card types, product types, and card products.
  *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "feature".
+ * via the `definition` "feature-configuration".
  */
-export interface Feature {
+export interface FeatureConfiguration {
   id: string;
   feature?:
     | {
@@ -417,9 +417,9 @@ export interface Feature {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "feature_select".
+ * via the `definition` "feature-configuration_select".
  */
-export interface FeatureSelect<T extends boolean = true> {
+export interface FeatureConfigurationSelect<T extends boolean = true> {
   feature?:
     | T
     | {

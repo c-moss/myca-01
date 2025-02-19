@@ -1,7 +1,7 @@
 import type { GlobalConfig } from 'payload'
 
 export const FeatureConfiguration: GlobalConfig = {
-  slug: 'feature',
+  slug: 'feature-configuration',
   admin: {
     description:
       'Describes a set of configurable features within the application. Features can be disabled for specific card types, product types, and card products.',
