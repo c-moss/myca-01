@@ -12,8 +12,14 @@ export const Feature: CollectionConfig = {
     {
       name: 'feature-code',
       type: 'text',
-      label: 'Feature shortcode',
+      label: 'Feature short code',
       required: true,
+      validate: (value: string | string[] | null | undefined) => {
+        if (typeof value == 'string') {
+          return /^[a-z-]+$/.test(value) || 'Only lowercase letters and hyphens are permitted'
+        }
+        return true
+      },
     },
     {
       name: 'feature-name',

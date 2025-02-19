@@ -159,26 +159,26 @@ export interface CardProduct {
   'card-product-id': string;
 }
 /**
- * Represents a card type e.g. Primary or Supplementary
+ * Represents a card type e.g. Primary or Supplementary. Short code should be a unique identifier for the card type.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "card-type".
  */
 export interface CardType {
   id: string;
+  'card-type-code': string;
   'card-type-name': string;
-  'card-type-description': string;
 }
 /**
- * Represents a product type e.g. Lending, Charge, Corporate, etc.
+ * Represents a product type e.g. Lending, Charge, Corporate, etc. Short code should be a unique identifier for the product type.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "product-type".
  */
 export interface ProductType {
   id: string;
+  'product-type-code': string;
   'product-type-name': string;
-  'product-type-description': string;
 }
 /**
  * Describes a configurable feature within the application. Features are used to enable or disable functionality within the app.
@@ -354,16 +354,16 @@ export interface CardBenefitsSelect<T extends boolean = true> {
  * via the `definition` "card-type_select".
  */
 export interface CardTypeSelect<T extends boolean = true> {
+  'card-type-code'?: T;
   'card-type-name'?: T;
-  'card-type-description'?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "product-type_select".
  */
 export interface ProductTypeSelect<T extends boolean = true> {
+  'product-type-code'?: T;
   'product-type-name'?: T;
-  'product-type-description'?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
