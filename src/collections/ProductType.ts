@@ -4,13 +4,12 @@ export const ProductType: CollectionConfig = {
   slug: 'product-type',
   admin: {
     useAsTitle: 'product-type-name',
-    description:
-      'Represents a product type e.g. Lending, Charge, Corporate, etc. Short code should be a unique identifier for the product type.',
+    description: 'Represents a product type e.g. Lending, Charge, Corporate, etc.',
   },
   timestamps: false,
   fields: [
     {
-      name: 'product-type-code',
+      name: 'id',
       type: 'text',
       label: 'Product type short code',
       required: true,
@@ -19,6 +18,9 @@ export const ProductType: CollectionConfig = {
           return /^[a-z-]+$/.test(value) || 'Only lowercase letters and hyphens are permitted'
         }
         return true
+      },
+      admin: {
+        description: 'Short code should be a unique identifier for the product type.',
       },
     },
     {

@@ -4,13 +4,12 @@ export const CardType: CollectionConfig = {
   slug: 'card-type',
   admin: {
     useAsTitle: 'card-type-name',
-    description:
-      'Represents a card type e.g. Primary or Supplementary. Short code should be a unique identifier for the card type.',
+    description: 'Represents a card type e.g. Primary or Supplementary.',
   },
   timestamps: false,
   fields: [
     {
-      name: 'card-type-code',
+      name: 'id',
       type: 'text',
       label: 'Card type short code',
       required: true,
@@ -19,6 +18,9 @@ export const CardType: CollectionConfig = {
           return /^[a-z-]+$/.test(value) || 'Only lowercase letters and hyphens are permitted'
         }
         return true
+      },
+      admin: {
+        description: 'Short code should be a unique identifier for the card type.',
       },
     },
     {

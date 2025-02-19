@@ -10,7 +10,7 @@ export const Feature: CollectionConfig = {
   timestamps: false,
   fields: [
     {
-      name: 'feature-code',
+      name: 'id',
       type: 'text',
       label: 'Feature short code',
       required: true,
@@ -19,6 +19,9 @@ export const Feature: CollectionConfig = {
           return /^[a-z-]+$/.test(value) || 'Only lowercase letters and hyphens are permitted'
         }
         return true
+      },
+      admin: {
+        description: 'Short code should be a unique identifier for the feature.',
       },
     },
     {

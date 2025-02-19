@@ -139,7 +139,7 @@ export interface CardBenefit {
               description: string;
               url: string;
               image: string | ImageAsset;
-              'card-products'?: (string | CardProduct)[] | null;
+              'card-products'?: (number | CardProduct)[] | null;
               id?: string | null;
             }[]
           | null;
@@ -148,36 +148,42 @@ export interface CardBenefit {
     | null;
 }
 /**
- * Represents a card product e.g. Centurion, Platinum, Gold, etc. Card product id should match the id used in the API.
+ * Represents a card product e.g. Centurion, Platinum, Gold, etc.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "card-product".
  */
 export interface CardProduct {
-  id: string;
+  /**
+   * Card product id should match the id used in the API.
+   */
+  id: number;
   'card-product-name': string;
-  'card-product-id': string;
 }
 /**
- * Represents a card type e.g. Primary or Supplementary. Short code should be a unique identifier for the card type.
+ * Represents a card type e.g. Primary or Supplementary.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "card-type".
  */
 export interface CardType {
+  /**
+   * Short code should be a unique identifier for the card type.
+   */
   id: string;
-  'card-type-code': string;
   'card-type-name': string;
 }
 /**
- * Represents a product type e.g. Lending, Charge, Corporate, etc. Short code should be a unique identifier for the product type.
+ * Represents a product type e.g. Lending, Charge, Corporate, etc.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "product-type".
  */
 export interface ProductType {
+  /**
+   * Short code should be a unique identifier for the product type.
+   */
   id: string;
-  'product-type-code': string;
   'product-type-name': string;
 }
 /**
@@ -187,12 +193,14 @@ export interface ProductType {
  * via the `definition` "feature".
  */
 export interface Feature {
+  /**
+   * Short code should be a unique identifier for the feature.
+   */
   id: string;
-  'feature-code': string;
   'feature-name': string;
   'disabled-card-types'?: (string | CardType)[] | null;
   'disabled-product-types'?: (string | ProductType)[] | null;
-  'disabled-card-products'?: (string | CardProduct)[] | null;
+  'disabled-card-products'?: (number | CardProduct)[] | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -223,7 +231,7 @@ export interface PayloadLockedDocument {
       } | null)
     | ({
         relationTo: 'card-product';
-        value: string | CardProduct;
+        value: number | CardProduct;
       } | null)
     | ({
         relationTo: 'feature';
@@ -354,7 +362,7 @@ export interface CardBenefitsSelect<T extends boolean = true> {
  * via the `definition` "card-type_select".
  */
 export interface CardTypeSelect<T extends boolean = true> {
-  'card-type-code'?: T;
+  id?: T;
   'card-type-name'?: T;
 }
 /**
@@ -362,7 +370,7 @@ export interface CardTypeSelect<T extends boolean = true> {
  * via the `definition` "product-type_select".
  */
 export interface ProductTypeSelect<T extends boolean = true> {
-  'product-type-code'?: T;
+  id?: T;
   'product-type-name'?: T;
 }
 /**
@@ -370,15 +378,15 @@ export interface ProductTypeSelect<T extends boolean = true> {
  * via the `definition` "card-product_select".
  */
 export interface CardProductSelect<T extends boolean = true> {
+  id?: T;
   'card-product-name'?: T;
-  'card-product-id'?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "feature_select".
  */
 export interface FeatureSelect<T extends boolean = true> {
-  'feature-code'?: T;
+  id?: T;
   'feature-name'?: T;
   'disabled-card-types'?: T;
   'disabled-product-types'?: T;
