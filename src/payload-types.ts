@@ -14,7 +14,10 @@ export interface Config {
     users: User;
     imageAssets: ImageAsset;
     'card-benefits': CardBenefit;
+    'card-type': CardType;
+    'product-type': ProductType;
     'card-product': CardProduct;
+    feature: Feature;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -24,7 +27,10 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     imageAssets: ImageAssetsSelect<false> | ImageAssetsSelect<true>;
     'card-benefits': CardBenefitsSelect<false> | CardBenefitsSelect<true>;
+    'card-type': CardTypeSelect<false> | CardTypeSelect<true>;
+    'product-type': ProductTypeSelect<false> | ProductTypeSelect<true>;
     'card-product': CardProductSelect<false> | CardProductSelect<true>;
+    feature: FeatureSelect<false> | FeatureSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -159,6 +165,48 @@ export interface CardProduct {
   createdAt: string;
 }
 /**
+ * Represents a card type e.g. Primary or Supplementary
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-type".
+ */
+export interface CardType {
+  id: string;
+  'card-type-name': string;
+  'card-type-description': string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Represents a product type e.g. Lending, Charge, Corporate, etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-type".
+ */
+export interface ProductType {
+  id: string;
+  'product-type-name': string;
+  'product-type-description': string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Describes a configurable feature within the application. Features are used to enable or disable functionality within the app.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feature".
+ */
+export interface Feature {
+  id: string;
+  'feature-code': string;
+  'feature-name': string;
+  'disabled-card-types'?: (string | CardType)[] | null;
+  'disabled-product-types'?: (string | ProductType)[] | null;
+  'disabled-card-products'?: (string | CardProduct)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -178,8 +226,20 @@ export interface PayloadLockedDocument {
         value: string | CardBenefit;
       } | null)
     | ({
+        relationTo: 'card-type';
+        value: string | CardType;
+      } | null)
+    | ({
+        relationTo: 'product-type';
+        value: string | ProductType;
+      } | null)
+    | ({
         relationTo: 'card-product';
         value: string | CardProduct;
+      } | null)
+    | ({
+        relationTo: 'feature';
+        value: string | Feature;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -307,11 +367,44 @@ export interface CardBenefitsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-type_select".
+ */
+export interface CardTypeSelect<T extends boolean = true> {
+  'card-type-name'?: T;
+  'card-type-description'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-type_select".
+ */
+export interface ProductTypeSelect<T extends boolean = true> {
+  'product-type-name'?: T;
+  'product-type-description'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "card-product_select".
  */
 export interface CardProductSelect<T extends boolean = true> {
   'card-product-name'?: T;
   'card-product-id'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feature_select".
+ */
+export interface FeatureSelect<T extends boolean = true> {
+  'feature-code'?: T;
+  'feature-name'?: T;
+  'disabled-card-types'?: T;
+  'disabled-product-types'?: T;
+  'disabled-card-products'?: T;
   updatedAt?: T;
   createdAt?: T;
 }
