@@ -7,6 +7,7 @@ export const Feature: CollectionConfig = {
     description:
       'Describes a configurable feature within the application. Features are used to enable or disable functionality within the app.',
   },
+  timestamps: false,
   fields: [
     {
       name: 'feature-code',

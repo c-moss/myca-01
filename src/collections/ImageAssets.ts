@@ -9,6 +9,7 @@ export const ImageAssets: CollectionConfig = {
     useAsTitle: 'name',
     description: 'A single image asset that can be used in various places throughout the app.',
   },
+  timestamps: false,
   upload: {
     staticDir: 'media',
     imageSizes: [

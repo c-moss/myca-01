@@ -6,6 +6,7 @@ export const ProductType: CollectionConfig = {
     useAsTitle: 'product-type-description',
     description: 'Represents a product type e.g. Lending, Charge, Corporate, etc.',
   },
+  timestamps: false,
   fields: [
     {
       name: 'product-type-name',

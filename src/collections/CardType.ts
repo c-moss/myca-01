@@ -6,6 +6,7 @@ export const CardType: CollectionConfig = {
     useAsTitle: 'card-type-description',
     description: 'Represents a card type e.g. Primary or Supplementary',
   },
+  timestamps: false,
   fields: [
     {
       name: 'card-type-name',

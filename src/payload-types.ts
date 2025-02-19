@@ -94,8 +94,6 @@ export interface ImageAsset {
   id: string;
   name: string;
   imageAltText: string;
-  updatedAt: string;
-  createdAt: string;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -148,8 +146,6 @@ export interface CardBenefit {
         id?: string | null;
       }[]
     | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * Represents a card product e.g. Centurion, Platinum, Gold, etc. Card product id should match the id used in the API.
@@ -161,8 +157,6 @@ export interface CardProduct {
   id: string;
   'card-product-name': string;
   'card-product-id': string;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * Represents a card type e.g. Primary or Supplementary
@@ -174,8 +168,6 @@ export interface CardType {
   id: string;
   'card-type-name': string;
   'card-type-description': string;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * Represents a product type e.g. Lending, Charge, Corporate, etc.
@@ -187,8 +179,6 @@ export interface ProductType {
   id: string;
   'product-type-name': string;
   'product-type-description': string;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * Describes a configurable feature within the application. Features are used to enable or disable functionality within the app.
@@ -203,8 +193,6 @@ export interface Feature {
   'disabled-card-types'?: (string | CardType)[] | null;
   'disabled-product-types'?: (string | ProductType)[] | null;
   'disabled-card-products'?: (string | CardProduct)[] | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -305,8 +293,6 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ImageAssetsSelect<T extends boolean = true> {
   name?: T;
   imageAltText?: T;
-  updatedAt?: T;
-  createdAt?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -362,8 +348,6 @@ export interface CardBenefitsSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -372,8 +356,6 @@ export interface CardBenefitsSelect<T extends boolean = true> {
 export interface CardTypeSelect<T extends boolean = true> {
   'card-type-name'?: T;
   'card-type-description'?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -382,8 +364,6 @@ export interface CardTypeSelect<T extends boolean = true> {
 export interface ProductTypeSelect<T extends boolean = true> {
   'product-type-name'?: T;
   'product-type-description'?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -392,8 +372,6 @@ export interface ProductTypeSelect<T extends boolean = true> {
 export interface CardProductSelect<T extends boolean = true> {
   'card-product-name'?: T;
   'card-product-id'?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -405,8 +383,6 @@ export interface FeatureSelect<T extends boolean = true> {
   'disabled-card-types'?: T;
   'disabled-product-types'?: T;
   'disabled-card-products'?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
