@@ -17,7 +17,6 @@ export interface Config {
     'card-type': CardType;
     'product-type': ProductType;
     'card-product': CardProduct;
-    feature: Feature;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -30,7 +29,6 @@ export interface Config {
     'card-type': CardTypeSelect<false> | CardTypeSelect<true>;
     'product-type': ProductTypeSelect<false> | ProductTypeSelect<true>;
     'card-product': CardProductSelect<false> | CardProductSelect<true>;
-    feature: FeatureSelect<false> | FeatureSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -38,8 +36,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    feature: Feature;
+  };
+  globalsSelect: {
+    feature: FeatureSelect<false> | FeatureSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -187,22 +189,6 @@ export interface ProductType {
   'product-type-name': string;
 }
 /**
- * Describes a configurable feature within the application. Features are used to enable or disable functionality within the app.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "feature".
- */
-export interface Feature {
-  /**
-   * Short code should be a unique identifier for the feature.
-   */
-  id: string;
-  'feature-name': string;
-  'disabled-card-types'?: (string | CardType)[] | null;
-  'disabled-product-types'?: (string | ProductType)[] | null;
-  'disabled-card-products'?: (number | CardProduct)[] | null;
-}
-/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -232,10 +218,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'card-product';
         value: number | CardProduct;
-      } | null)
-    | ({
-        relationTo: 'feature';
-        value: string | Feature;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -383,17 +365,6 @@ export interface CardProductSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "feature_select".
- */
-export interface FeatureSelect<T extends boolean = true> {
-  id?: T;
-  'feature-name'?: T;
-  'disabled-card-types'?: T;
-  'disabled-product-types'?: T;
-  'disabled-card-products'?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -423,6 +394,44 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * Describes a set of configurable features within the application. Features can be disabled for specific card types, product types, and card products.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feature".
+ */
+export interface Feature {
+  id: string;
+  feature?:
+    | {
+        id: string | null;
+        'feature-name': string;
+        'disabled-card-types'?: (string | CardType)[] | null;
+        'disabled-product-types'?: (string | ProductType)[] | null;
+        'disabled-card-products'?: (number | CardProduct)[] | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "feature_select".
+ */
+export interface FeatureSelect<T extends boolean = true> {
+  feature?:
+    | T
+    | {
+        id?: T;
+        'feature-name'?: T;
+        'disabled-card-types'?: T;
+        'disabled-product-types'?: T;
+        'disabled-card-products'?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
