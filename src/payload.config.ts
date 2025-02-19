@@ -14,6 +14,7 @@ import { CardType } from './collections/CardType'
 import { ProductType } from './collections/ProductType'
 import { CardProduct } from './collections/CardProduct'
 import { FeatureConfiguration } from './collections/FeatureConfiguration'
+import { migrations } from './migrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,6 +36,7 @@ export default buildConfig({
   // database-adapter-config-start
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
+    prodMigrations: migrations,
   }),
   // database-adapter-config-end
   sharp,
