@@ -13,7 +13,9 @@ import { CardBenefits } from './collections/CardBenefits'
 import { CardType } from './collections/CardType'
 import { ProductType } from './collections/ProductType'
 import { CardProduct } from './collections/CardProduct'
+import { CardStatus } from './collections/CardStatus'
 import { FeatureConfiguration } from './collections/FeatureConfiguration'
+import { AccountStatus } from './collections/AccountStatus'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +27,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, ImageAssets, CardBenefits, CardType, ProductType, CardProduct],
+  collections: [
+    Users,
+    ImageAssets,
+    CardBenefits,
+    CardType,
+    ProductType,
+    CardProduct,
+    CardStatus,
+    AccountStatus,
+  ],
   globals: [FeatureConfiguration],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

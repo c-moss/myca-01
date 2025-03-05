@@ -17,6 +17,8 @@ export interface Config {
     'card-type': CardType;
     'product-type': ProductType;
     'card-product': CardProduct;
+    'card-status': CardStatus;
+    'account-status': AccountStatus;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -29,6 +31,8 @@ export interface Config {
     'card-type': CardTypeSelect<false> | CardTypeSelect<true>;
     'product-type': ProductTypeSelect<false> | ProductTypeSelect<true>;
     'card-product': CardProductSelect<false> | CardProductSelect<true>;
+    'card-status': CardStatusSelect<false> | CardStatusSelect<true>;
+    'account-status': AccountStatusSelect<false> | AccountStatusSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -189,6 +193,32 @@ export interface ProductType {
   'product-type-name': string;
 }
 /**
+ * Represents a card status e.g. Active, Suspended etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-status".
+ */
+export interface CardStatus {
+  /**
+   * Short code should be a unique identifier for the card status.
+   */
+  id: string;
+  'card-status-name': string;
+}
+/**
+ * Represents an account status e.g. Active, Suspended etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "account-status".
+ */
+export interface AccountStatus {
+  /**
+   * Short code should be a unique identifier for the account status.
+   */
+  id: string;
+  'account-status-name': string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -218,6 +248,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'card-product';
         value: number | CardProduct;
+      } | null)
+    | ({
+        relationTo: 'card-status';
+        value: string | CardStatus;
+      } | null)
+    | ({
+        relationTo: 'account-status';
+        value: string | AccountStatus;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -365,6 +403,22 @@ export interface CardProductSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "card-status_select".
+ */
+export interface CardStatusSelect<T extends boolean = true> {
+  id?: T;
+  'card-status-name'?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "account-status_select".
+ */
+export interface AccountStatusSelect<T extends boolean = true> {
+  id?: T;
+  'account-status-name'?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -410,6 +464,8 @@ export interface FeatureConfiguration {
         'disabled-card-types'?: (string | CardType)[] | null;
         'disabled-product-types'?: (string | ProductType)[] | null;
         'disabled-card-products'?: (number | CardProduct)[] | null;
+        'disabled-card-status'?: (string | CardStatus)[] | null;
+        'disabled-account-status'?: (string | AccountStatus)[] | null;
       }[]
     | null;
   updatedAt?: string | null;
@@ -428,6 +484,8 @@ export interface FeatureConfigurationSelect<T extends boolean = true> {
         'disabled-card-types'?: T;
         'disabled-product-types'?: T;
         'disabled-card-products'?: T;
+        'disabled-card-status'?: T;
+        'disabled-account-status'?: T;
       };
   updatedAt?: T;
   createdAt?: T;
