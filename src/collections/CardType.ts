@@ -15,7 +15,7 @@ export const CardType: CollectionConfig = {
       required: true,
       validate: (value: string | string[] | null | undefined) => {
         if (typeof value == 'string') {
-          return /^[a-zA-Z-]+$/.test(value) || 'Only letters and hyphens are permitted'
+          return /^[a-z]+(?:[A-Z][a-z]+)*$/.test(value) || 'Short code should be in camel case'
         }
         return true
       },
