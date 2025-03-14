@@ -32,7 +32,7 @@ export const TermsAndConditions: CollectionConfig = {
     },
     {
       name: 'tnc-body',
-      type: 'richText',
+      type: 'textarea',
       label: 'Terms and conditions body',
       required: true,
     },
