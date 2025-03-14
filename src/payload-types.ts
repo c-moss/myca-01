@@ -228,29 +228,15 @@ export interface AccountStatus {
  */
 export interface TermsAndCondition {
   /**
-   * Short code should be a unique identifier for the set of terms and conditions.
+   * Type should be a unique identifier for the set of terms and conditions.
    */
   id: string;
-  'tnc-name': string;
-  'tnc-body': {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  'tnc-links'?:
+  name: string;
+  text: string;
+  'link-items'?:
     | {
-        'link-label': string;
-        'link-url': string;
+        label: string;
+        url: string;
         id?: string | null;
       }[]
     | null;
@@ -464,13 +450,13 @@ export interface AccountStatusSelect<T extends boolean = true> {
  */
 export interface TermsAndConditionsSelect<T extends boolean = true> {
   id?: T;
-  'tnc-name'?: T;
-  'tnc-body'?: T;
-  'tnc-links'?:
+  name?: T;
+  text?: T;
+  'link-items'?:
     | T
     | {
-        'link-label'?: T;
-        'link-url'?: T;
+        label?: T;
+        url?: T;
         id?: T;
       };
 }
