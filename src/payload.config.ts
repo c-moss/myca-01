@@ -16,6 +16,7 @@ import { CardProduct } from './collections/CardProduct'
 import { CardStatus } from './collections/CardStatus'
 import { FeatureConfiguration } from './collections/FeatureConfiguration'
 import { AccountStatus } from './collections/AccountStatus'
+import { TermsAndConditions } from './collections/TermsAndConditions'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -36,6 +37,7 @@ export default buildConfig({
     CardProduct,
     CardStatus,
     AccountStatus,
+    TermsAndConditions,
   ],
   globals: [FeatureConfiguration],
   editor: lexicalEditor(),

@@ -19,6 +19,7 @@ export interface Config {
     'card-product': CardProduct;
     'card-status': CardStatus;
     'account-status': AccountStatus;
+    'terms-and-conditions': TermsAndCondition;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -33,6 +34,7 @@ export interface Config {
     'card-product': CardProductSelect<false> | CardProductSelect<true>;
     'card-status': CardStatusSelect<false> | CardStatusSelect<true>;
     'account-status': AccountStatusSelect<false> | AccountStatusSelect<true>;
+    'terms-and-conditions': TermsAndConditionsSelect<false> | TermsAndConditionsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -219,6 +221,41 @@ export interface AccountStatus {
   'account-status-name': string;
 }
 /**
+ * Represents a Terms and Conditions for a specific feature.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "terms-and-conditions".
+ */
+export interface TermsAndCondition {
+  /**
+   * Short code should be a unique identifier for the set of terms and conditions.
+   */
+  id: string;
+  'tnc-name': string;
+  'tnc-body': {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  'tnc-links'?:
+    | {
+        'link-label': string;
+        'link-url': string;
+        id?: string | null;
+      }[]
+    | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -256,6 +293,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'account-status';
         value: string | AccountStatus;
+      } | null)
+    | ({
+        relationTo: 'terms-and-conditions';
+        value: string | TermsAndCondition;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -416,6 +457,22 @@ export interface CardStatusSelect<T extends boolean = true> {
 export interface AccountStatusSelect<T extends boolean = true> {
   id?: T;
   'account-status-name'?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "terms-and-conditions_select".
+ */
+export interface TermsAndConditionsSelect<T extends boolean = true> {
+  id?: T;
+  'tnc-name'?: T;
+  'tnc-body'?: T;
+  'tnc-links'?:
+    | T
+    | {
+        'link-label'?: T;
+        'link-url'?: T;
+        id?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
