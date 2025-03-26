@@ -1,11 +1,12 @@
 import type { CollectionConfig } from 'payload'
-import { cardTenants } from './access/cardTenants'
+import { cardTenants } from '../access/cardTenants'
 
 export const TermsAndConditions: CollectionConfig = {
   slug: 'terms-and-conditions',
   admin: {
     useAsTitle: 'name',
     description: 'Represents a Terms and Conditions for a specific feature.',
+    group: 'Amex',
   },
   access: {
     create: cardTenants,

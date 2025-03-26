@@ -1,17 +1,18 @@
 import type { CollectionConfig } from 'payload'
 
-export const ProductType: CollectionConfig = {
-  slug: 'product-type',
+export const AccountStatus: CollectionConfig = {
+  slug: 'account-status',
   admin: {
-    useAsTitle: 'product-type-name',
-    description: 'Represents a product type e.g. Lending, Charge, Corporate, etc.',
+    useAsTitle: 'account-status-name',
+    description: 'Represents an account status e.g. Active, Suspended etc.',
+    group: 'Amex',
   },
   timestamps: false,
   fields: [
     {
       name: 'id',
       type: 'text',
-      label: 'Product type short code',
+      label: 'Account status short code',
       required: true,
       validate: (value: string | string[] | null | undefined) => {
         if (typeof value == 'string') {
@@ -20,13 +21,13 @@ export const ProductType: CollectionConfig = {
         return true
       },
       admin: {
-        description: 'Short code should be a unique identifier for the product type.',
+        description: 'Short code should be a unique identifier for the account status.',
       },
     },
     {
-      name: 'product-type-name',
+      name: 'account-status-name',
       type: 'text',
-      label: 'Product type name',
+      label: 'Account status name',
       required: true,
     },
   ],

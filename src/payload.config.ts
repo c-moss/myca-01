@@ -9,14 +9,14 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { ImageAssets } from './collections/ImageAssets'
-import { CardBenefits } from './collections/CardBenefits'
-import { CardType } from './collections/CardType'
-import { ProductType } from './collections/ProductType'
-import { CardProduct } from './collections/CardProduct'
-import { CardStatus } from './collections/CardStatus'
-import { FeatureConfiguration } from './collections/FeatureConfiguration'
-import { AccountStatus } from './collections/AccountStatus'
-import { TermsAndConditions } from './collections/TermsAndConditions'
+import { CardBenefits } from './collections/amex/CardBenefits'
+import { CardType } from './collections/amex/CardType'
+import { ProductType } from './collections/amex/ProductType'
+import { CardProduct } from './collections/amex/CardProduct'
+import { CardStatus } from './collections/amex/CardStatus'
+import { FeatureConfiguration } from './collections/amex/FeatureConfiguration'
+import { AccountStatus } from './collections/amex/AccountStatus'
+import { TermsAndConditions } from './collections/amex/TermsAndConditions'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)

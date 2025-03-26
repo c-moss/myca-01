@@ -1,17 +1,18 @@
 import type { CollectionConfig } from 'payload'
 
-export const CardType: CollectionConfig = {
-  slug: 'card-type',
+export const CardStatus: CollectionConfig = {
+  slug: 'card-status',
   admin: {
-    useAsTitle: 'card-type-name',
-    description: 'Represents a card type e.g. Primary or Supplementary.',
+    useAsTitle: 'card-status-name',
+    description: 'Represents a card status e.g. Active, Suspended etc.',
+    group: 'Amex',
   },
   timestamps: false,
   fields: [
     {
       name: 'id',
       type: 'text',
-      label: 'Card type short code',
+      label: 'Card status short code',
       required: true,
       validate: (value: string | string[] | null | undefined) => {
         if (typeof value == 'string') {
@@ -20,13 +21,13 @@ export const CardType: CollectionConfig = {
         return true
       },
       admin: {
-        description: 'Short code should be a unique identifier for the card type.',
+        description: 'Short code should be a unique identifier for the card status.',
       },
     },
     {
-      name: 'card-type-name',
+      name: 'card-status-name',
       type: 'text',
-      label: 'Card type name',
+      label: 'Card status name',
       required: true,
     },
   ],

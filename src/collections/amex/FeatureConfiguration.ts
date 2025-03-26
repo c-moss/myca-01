@@ -5,6 +5,7 @@ export const FeatureConfiguration: GlobalConfig = {
   admin: {
     description:
       'Describes a set of configurable features within the application. Features can be disabled for specific card types, product types, and card products.',
+    group: 'Amex',
   },
   fields: [
     {

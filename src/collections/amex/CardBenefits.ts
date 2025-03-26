@@ -6,6 +6,7 @@ export const CardBenefits: CollectionConfig = {
     useAsTitle: 'benefits-type',
     description:
       'Defines the structure of a cards benefits page in the MYCA app. Represents either the Rewards page or the Membership page. Contains an arbitrary number of sections, each containing a list of image tiles.',
+    group: 'Amex',
   },
   timestamps: false,
   fields: [

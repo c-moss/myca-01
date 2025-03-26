@@ -5,6 +5,7 @@ export const CardProduct: CollectionConfig = {
   admin: {
     useAsTitle: 'card-product-name',
     description: 'Represents a card product e.g. Centurion, Platinum, Gold, etc.',
+    group: 'Amex',
   },
   timestamps: false,
   fields: [
