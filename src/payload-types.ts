@@ -20,6 +20,7 @@ export interface Config {
     'card-status': CardStatus;
     'account-status': AccountStatus;
     'terms-and-conditions': TermsAndCondition;
+    'key-benefit': KeyBenefit;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -35,6 +36,7 @@ export interface Config {
     'card-status': CardStatusSelect<false> | CardStatusSelect<true>;
     'account-status': AccountStatusSelect<false> | AccountStatusSelect<true>;
     'terms-and-conditions': TermsAndConditionsSelect<false> | TermsAndConditionsSelect<true>;
+    'key-benefit': KeyBenefitSelect<false> | KeyBenefitSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -242,6 +244,33 @@ export interface TermsAndCondition {
     | null;
 }
 /**
+ * Used to define the sections of the key benefits component.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "key-benefit".
+ */
+export interface KeyBenefit {
+  /**
+   * Short code should be a unique identifier for the key benefit.
+   */
+  id: string;
+  'benefit-title': string;
+  'benefit-body': string;
+  /**
+   * Links to be embedded in the benefit body
+   */
+  'embedded-links'?:
+    | {
+        /**
+         * The benefit body will be parsed to replace this text with the link.
+         */
+        'embedded-link-text': string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -283,6 +312,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'terms-and-conditions';
         value: string | TermsAndCondition;
+      } | null)
+    | ({
+        relationTo: 'key-benefit';
+        value: string | KeyBenefit;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -456,6 +489,22 @@ export interface TermsAndConditionsSelect<T extends boolean = true> {
     | T
     | {
         label?: T;
+        url?: T;
+        id?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "key-benefit_select".
+ */
+export interface KeyBenefitSelect<T extends boolean = true> {
+  id?: T;
+  'benefit-title'?: T;
+  'benefit-body'?: T;
+  'embedded-links'?:
+    | T
+    | {
+        'embedded-link-text'?: T;
         url?: T;
         id?: T;
       };
