@@ -21,6 +21,7 @@ export interface Config {
     'account-status': AccountStatus;
     'terms-and-conditions': TermsAndCondition;
     'key-benefit': KeyBenefit;
+    voucher: Voucher;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -37,6 +38,7 @@ export interface Config {
     'account-status': AccountStatusSelect<false> | AccountStatusSelect<true>;
     'terms-and-conditions': TermsAndConditionsSelect<false> | TermsAndConditionsSelect<true>;
     'key-benefit': KeyBenefitSelect<false> | KeyBenefitSelect<true>;
+    voucher: VoucherSelect<false> | VoucherSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -271,6 +273,26 @@ export interface KeyBenefit {
     | null;
 }
 /**
+ * Represents a 3rd-party voucher product that can be purchased with Amex points.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "voucher".
+ */
+export interface Voucher {
+  /**
+   * Voucher code should match the identifier specific by FVI / Voucher Management System.
+   */
+  id: string;
+  /**
+   * Name of the voucher product. This should be the name that is displayed to the user in the app.
+   */
+  'voucher-name': string;
+  'product-description': string;
+  'delivery-details': string;
+  'terms-and-conditions': string;
+  image: string | ImageAsset;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -316,6 +338,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'key-benefit';
         value: string | KeyBenefit;
+      } | null)
+    | ({
+        relationTo: 'voucher';
+        value: string | Voucher;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -508,6 +534,18 @@ export interface KeyBenefitSelect<T extends boolean = true> {
         url?: T;
         id?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "voucher_select".
+ */
+export interface VoucherSelect<T extends boolean = true> {
+  id?: T;
+  'voucher-name'?: T;
+  'product-description'?: T;
+  'delivery-details'?: T;
+  'terms-and-conditions'?: T;
+  image?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

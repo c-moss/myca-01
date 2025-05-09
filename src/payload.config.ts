@@ -18,6 +18,7 @@ import { FeatureConfiguration } from './collections/amex/FeatureConfiguration'
 import { AccountStatus } from './collections/amex/AccountStatus'
 import { TermsAndConditions } from './collections/amex/TermsAndConditions'
 import { KeyBenefit } from './collections/amex/KeyBenefit'
+import { Voucher } from './collections/amex/Voucher'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -40,6 +41,7 @@ export default buildConfig({
     AccountStatus,
     TermsAndConditions,
     KeyBenefit,
+    Voucher,
   ],
   globals: [FeatureConfiguration],
   editor: lexicalEditor(),
