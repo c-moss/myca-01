@@ -22,6 +22,7 @@ export interface Config {
     'terms-and-conditions': TermsAndCondition;
     'key-benefit': KeyBenefit;
     voucher: Voucher;
+    'links-page': LinksPage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -39,6 +40,7 @@ export interface Config {
     'terms-and-conditions': TermsAndConditionsSelect<false> | TermsAndConditionsSelect<true>;
     'key-benefit': KeyBenefitSelect<false> | KeyBenefitSelect<true>;
     voucher: VoucherSelect<false> | VoucherSelect<true>;
+    'links-page': LinksPageSelect<false> | LinksPageSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -293,6 +295,29 @@ export interface Voucher {
   image: string | ImageAsset;
 }
 /**
+ * Defines the structure of a links page in the MYCA app. Contains an arbitrary number of sections, each containing a list of links.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "links-page".
+ */
+export interface LinksPage {
+  id: string;
+  'page-name': string;
+  'links-section'?:
+    | {
+        'section-title': string;
+        link?:
+          | {
+              description: string;
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -342,6 +367,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'voucher';
         value: string | Voucher;
+      } | null)
+    | ({
+        relationTo: 'links-page';
+        value: string | LinksPage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -546,6 +575,26 @@ export interface VoucherSelect<T extends boolean = true> {
   'delivery-details'?: T;
   'terms-and-conditions'?: T;
   image?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "links-page_select".
+ */
+export interface LinksPageSelect<T extends boolean = true> {
+  'page-name'?: T;
+  'links-section'?:
+    | T
+    | {
+        'section-title'?: T;
+        link?:
+          | T
+          | {
+              description?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
