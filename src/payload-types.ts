@@ -306,7 +306,8 @@ export interface LinksPage {
   'links-section'?:
     | {
         'section-title': string;
-        link?:
+        'section-url'?: string | null;
+        links?:
           | {
               description: string;
               url: string;
@@ -586,7 +587,8 @@ export interface LinksPageSelect<T extends boolean = true> {
     | T
     | {
         'section-title'?: T;
-        link?:
+        'section-url'?: T;
+        links?:
           | T
           | {
               description?: T;

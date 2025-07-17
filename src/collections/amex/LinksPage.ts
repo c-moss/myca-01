@@ -27,10 +27,11 @@ export const LinksPage: CollectionConfig = {
           label: 'Section title',
           required: true,
         },
+        { name: 'section-url', type: 'text', label: 'Section URL', required: false },
         {
-          name: 'link',
+          name: 'links',
           type: 'array',
-          label: 'Link',
+          label: 'Links',
           fields: [
             {
               name: 'description',
