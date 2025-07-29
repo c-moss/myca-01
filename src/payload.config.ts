@@ -20,6 +20,7 @@ import { TermsAndConditions } from './collections/amex/TermsAndConditions'
 import { KeyBenefit } from './collections/amex/KeyBenefit'
 import { Voucher } from './collections/amex/Voucher'
 import { LinksPage } from './collections/amex/LinksPage'
+import { Link } from './collections/amex/Link'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -44,6 +45,7 @@ export default buildConfig({
     KeyBenefit,
     Voucher,
     LinksPage,
+    Link,
   ],
   globals: [FeatureConfiguration],
   editor: lexicalEditor(),
