@@ -25,7 +25,7 @@ export const LinksPage: CollectionConfig = {
           name: 'section-title',
           type: 'text',
           label: 'Section title',
-          required: true,
+          required: false,
         },
         { name: 'section-url', type: 'text', label: 'Section URL', required: false },
         {

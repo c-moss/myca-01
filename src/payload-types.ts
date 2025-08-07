@@ -307,7 +307,7 @@ export interface LinksPage {
   'page-name': string;
   'links-section'?:
     | {
-        'section-title': string;
+        'section-title'?: string | null;
         'section-url'?: string | null;
         links?:
           | {
