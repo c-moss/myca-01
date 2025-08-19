@@ -23,7 +23,6 @@ export interface Config {
     'key-benefit': KeyBenefit;
     voucher: Voucher;
     'links-page': LinksPage;
-    link: Link;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -42,7 +41,6 @@ export interface Config {
     'key-benefit': KeyBenefitSelect<false> | KeyBenefitSelect<true>;
     voucher: VoucherSelect<false> | VoucherSelect<true>;
     'links-page': LinksPageSelect<false> | LinksPageSelect<true>;
-    link: LinkSelect<false> | LinkSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -321,21 +319,6 @@ export interface LinksPage {
     | null;
 }
 /**
- * Defines a link in the MYCA app. Links can be nested to create a hierarchy of links. Each link can have a label, URL, and an arbitrary number of child links.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "link".
- */
-export interface Link {
-  /**
-   * Short code should be a unique identifier for the link.
-   */
-  id: string;
-  'link-label': string;
-  url?: string | null;
-  'child-links'?: (string | Link)[] | null;
-}
-/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -389,10 +372,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'links-page';
         value: string | LinksPage;
-      } | null)
-    | ({
-        relationTo: 'link';
-        value: string | Link;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -618,16 +597,6 @@ export interface LinksPageSelect<T extends boolean = true> {
             };
         id?: T;
       };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "link_select".
- */
-export interface LinkSelect<T extends boolean = true> {
-  id?: T;
-  'link-label'?: T;
-  url?: T;
-  'child-links'?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
