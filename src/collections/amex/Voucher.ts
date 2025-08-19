@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const Voucher: CollectionConfig = {
   slug: 'voucher',
   admin: {
-    useAsTitle: 'voucher-name',
+    useAsTitle: 'voucherName',
     description: 'Represents a 3rd-party voucher product that can be purchased with Amex points.',
     group: 'Amex',
   },
@@ -20,7 +20,7 @@ export const Voucher: CollectionConfig = {
       },
     },
     {
-      name: 'voucher-name',
+      name: 'voucherName',
       type: 'text',
       label: 'Voucher name',
       required: true,
@@ -30,19 +30,19 @@ export const Voucher: CollectionConfig = {
       },
     },
     {
-      name: 'product-description',
+      name: 'productDescription',
       type: 'textarea',
       label: 'Product description',
       required: true,
     },
     {
-      name: 'delivery-details',
+      name: 'deliveryDetails',
       type: 'textarea',
       label: 'Delivery details',
       required: true,
     },
     {
-      name: 'terms-and-conditions',
+      name: 'termsAndConditions',
       type: 'textarea',
       label: 'Terms and conditions',
       required: true,

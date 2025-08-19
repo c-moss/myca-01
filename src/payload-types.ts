@@ -144,16 +144,16 @@ export interface ImageAsset {
  */
 export interface CardBenefit {
   id: string;
-  'benefits-type': 'card-rewards' | 'card-membership';
-  'benefits-section'?:
+  benefitsType: 'card-rewards' | 'card-membership';
+  benefitsSection?:
     | {
-        'section-title': string;
+        sectionTitle: string;
         tile?:
           | {
               description: string;
               url: string;
               image: string | ImageAsset;
-              'card-products'?: (number | CardProduct)[] | null;
+              cardProducts?: (number | CardProduct)[] | null;
               id?: string | null;
             }[]
           | null;
@@ -172,7 +172,7 @@ export interface CardProduct {
    * Card product id should match the id used in the API.
    */
   id: number;
-  'card-product-name': string;
+  cardProductName: string;
 }
 /**
  * Represents a card type e.g. Primary or Supplementary.
@@ -185,7 +185,7 @@ export interface CardType {
    * Short code should be a unique identifier for the card type.
    */
   id: string;
-  'card-type-name': string;
+  cardTypeName: string;
 }
 /**
  * Represents a product type e.g. Lending, Charge, Corporate, etc.
@@ -198,7 +198,7 @@ export interface ProductType {
    * Short code should be a unique identifier for the product type.
    */
   id: string;
-  'product-type-name': string;
+  productTypeName: string;
 }
 /**
  * Represents a card status e.g. Active, Suspended etc.
@@ -211,7 +211,7 @@ export interface CardStatus {
    * Short code should be a unique identifier for the card status.
    */
   id: string;
-  'card-status-name': string;
+  cardStatusName: string;
 }
 /**
  * Represents an account status e.g. Active, Suspended etc.
@@ -224,7 +224,7 @@ export interface AccountStatus {
    * Short code should be a unique identifier for the account status.
    */
   id: string;
-  'account-status-name': string;
+  accountStatusName: string;
 }
 /**
  * Represents a Terms and Conditions for a specific feature.
@@ -239,7 +239,7 @@ export interface TermsAndCondition {
   id: string;
   name: string;
   text: string;
-  'link-items'?:
+  linkItems?:
     | {
         label: string;
         url: string;
@@ -258,17 +258,17 @@ export interface KeyBenefit {
    * Short code should be a unique identifier for the key benefit.
    */
   id: string;
-  'benefit-title': string;
-  'benefit-body': string;
+  benefitTitle: string;
+  benefitBody: string;
   /**
    * Links to be embedded in the benefit body
    */
-  'embedded-links'?:
+  embeddedLinks?:
     | {
         /**
          * The benefit body will be parsed to replace this text with the link.
          */
-        'embedded-link-text': string;
+        embeddedLinkText: string;
         url: string;
         id?: string | null;
       }[]
@@ -288,10 +288,10 @@ export interface Voucher {
   /**
    * Name of the voucher product. This should be the name that is displayed to the user in the app.
    */
-  'voucher-name': string;
-  'product-description': string;
-  'delivery-details': string;
-  'terms-and-conditions': string;
+  voucherName: string;
+  productDescription: string;
+  deliveryDetails: string;
+  termsAndConditions: string;
   image: string | ImageAsset;
 }
 /**
@@ -302,11 +302,11 @@ export interface Voucher {
  */
 export interface LinksPage {
   id: string;
-  'page-name': string;
-  'links-section'?:
+  pageName: string;
+  linksSection?:
     | {
-        'section-title'?: string | null;
-        'section-url'?: string | null;
+        sectionTitle?: string | null;
+        sectionUrl?: string | null;
         links?:
           | {
               description: string;
@@ -476,18 +476,18 @@ export interface ImageAssetsSelect<T extends boolean = true> {
  * via the `definition` "card-benefits_select".
  */
 export interface CardBenefitsSelect<T extends boolean = true> {
-  'benefits-type'?: T;
-  'benefits-section'?:
+  benefitsType?: T;
+  benefitsSection?:
     | T
     | {
-        'section-title'?: T;
+        sectionTitle?: T;
         tile?:
           | T
           | {
               description?: T;
               url?: T;
               image?: T;
-              'card-products'?: T;
+              cardProducts?: T;
               id?: T;
             };
         id?: T;
@@ -499,7 +499,7 @@ export interface CardBenefitsSelect<T extends boolean = true> {
  */
 export interface CardTypeSelect<T extends boolean = true> {
   id?: T;
-  'card-type-name'?: T;
+  cardTypeName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -507,7 +507,7 @@ export interface CardTypeSelect<T extends boolean = true> {
  */
 export interface ProductTypeSelect<T extends boolean = true> {
   id?: T;
-  'product-type-name'?: T;
+  productTypeName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -515,7 +515,7 @@ export interface ProductTypeSelect<T extends boolean = true> {
  */
 export interface CardProductSelect<T extends boolean = true> {
   id?: T;
-  'card-product-name'?: T;
+  cardProductName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -523,7 +523,7 @@ export interface CardProductSelect<T extends boolean = true> {
  */
 export interface CardStatusSelect<T extends boolean = true> {
   id?: T;
-  'card-status-name'?: T;
+  cardStatusName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -531,7 +531,7 @@ export interface CardStatusSelect<T extends boolean = true> {
  */
 export interface AccountStatusSelect<T extends boolean = true> {
   id?: T;
-  'account-status-name'?: T;
+  accountStatusName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -541,7 +541,7 @@ export interface TermsAndConditionsSelect<T extends boolean = true> {
   id?: T;
   name?: T;
   text?: T;
-  'link-items'?:
+  linkItems?:
     | T
     | {
         label?: T;
@@ -555,12 +555,12 @@ export interface TermsAndConditionsSelect<T extends boolean = true> {
  */
 export interface KeyBenefitSelect<T extends boolean = true> {
   id?: T;
-  'benefit-title'?: T;
-  'benefit-body'?: T;
-  'embedded-links'?:
+  benefitTitle?: T;
+  benefitBody?: T;
+  embeddedLinks?:
     | T
     | {
-        'embedded-link-text'?: T;
+        embeddedLinkText?: T;
         url?: T;
         id?: T;
       };
@@ -571,10 +571,10 @@ export interface KeyBenefitSelect<T extends boolean = true> {
  */
 export interface VoucherSelect<T extends boolean = true> {
   id?: T;
-  'voucher-name'?: T;
-  'product-description'?: T;
-  'delivery-details'?: T;
-  'terms-and-conditions'?: T;
+  voucherName?: T;
+  productDescription?: T;
+  deliveryDetails?: T;
+  termsAndConditions?: T;
   image?: T;
 }
 /**
@@ -582,12 +582,12 @@ export interface VoucherSelect<T extends boolean = true> {
  * via the `definition` "links-page_select".
  */
 export interface LinksPageSelect<T extends boolean = true> {
-  'page-name'?: T;
-  'links-section'?:
+  pageName?: T;
+  linksSection?:
     | T
     | {
-        'section-title'?: T;
-        'section-url'?: T;
+        sectionTitle?: T;
+        sectionUrl?: T;
         links?:
           | T
           | {
@@ -641,12 +641,12 @@ export interface FeatureConfiguration {
   feature?:
     | {
         id: string | null;
-        'feature-name': string;
-        'disabled-card-types'?: (string | CardType)[] | null;
-        'disabled-product-types'?: (string | ProductType)[] | null;
-        'disabled-card-products'?: (number | CardProduct)[] | null;
-        'disabled-card-status'?: (string | CardStatus)[] | null;
-        'disabled-account-status'?: (string | AccountStatus)[] | null;
+        featureName: string;
+        disabledCardTypes?: (string | CardType)[] | null;
+        disabledProductTypes?: (string | ProductType)[] | null;
+        disabledCardProducts?: (number | CardProduct)[] | null;
+        disabledCardStatus?: (string | CardStatus)[] | null;
+        disabledAccountStatus?: (string | AccountStatus)[] | null;
       }[]
     | null;
   updatedAt?: string | null;
@@ -661,12 +661,12 @@ export interface FeatureConfigurationSelect<T extends boolean = true> {
     | T
     | {
         id?: T;
-        'feature-name'?: T;
-        'disabled-card-types'?: T;
-        'disabled-product-types'?: T;
-        'disabled-card-products'?: T;
-        'disabled-card-status'?: T;
-        'disabled-account-status'?: T;
+        featureName?: T;
+        disabledCardTypes?: T;
+        disabledProductTypes?: T;
+        disabledCardProducts?: T;
+        disabledCardStatus?: T;
+        disabledAccountStatus?: T;
       };
   updatedAt?: T;
   createdAt?: T;

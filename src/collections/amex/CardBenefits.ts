@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const CardBenefits: CollectionConfig = {
   slug: 'card-benefits',
   admin: {
-    useAsTitle: 'benefits-type',
+    useAsTitle: 'benefitsType',
     description:
       'Defines the structure of a cards benefits page in the MYCA app. Represents either the Rewards page or the Membership page. Contains an arbitrary number of sections, each containing a list of image tiles.',
     group: 'Amex',
@@ -11,28 +11,28 @@ export const CardBenefits: CollectionConfig = {
   timestamps: false,
   fields: [
     {
-      name: 'benefits-type',
+      name: 'benefitsType',
       type: 'select',
       label: 'Benefits type',
       options: [
         {
           label: 'Rewards',
-          value: 'card-rewards',
+          value: 'cardRewards',
         },
         {
           label: 'Membership',
-          value: 'card-membership',
+          value: 'cardMembership',
         },
       ],
       required: true,
     },
     {
-      name: 'benefits-section',
+      name: 'benefitsSection',
       type: 'array',
       label: 'Section',
       fields: [
         {
-          name: 'section-title',
+          name: 'sectionTitle',
           type: 'text',
           label: 'Section title',
           required: true,
@@ -62,7 +62,7 @@ export const CardBenefits: CollectionConfig = {
               required: true,
             },
             {
-              name: 'card-products',
+              name: 'cardProducts',
               type: 'relationship',
               relationTo: 'card-product',
               label: 'Card products',

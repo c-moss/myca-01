@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const LinksPage: CollectionConfig = {
   slug: 'links-page',
   admin: {
-    useAsTitle: 'page-name',
+    useAsTitle: 'pageName',
     description:
       'Defines the structure of a links page in the MYCA app. Contains an arbitrary number of sections, each containing a list of links.',
     group: 'Amex',
@@ -11,23 +11,23 @@ export const LinksPage: CollectionConfig = {
   timestamps: false,
   fields: [
     {
-      name: 'page-name',
+      name: 'pageName',
       type: 'text',
       label: 'Page Name',
       required: true,
     },
     {
-      name: 'links-section',
+      name: 'linksSection',
       type: 'array',
       label: 'Section',
       fields: [
         {
-          name: 'section-title',
+          name: 'sectionTitle',
           type: 'text',
           label: 'Section title',
           required: false,
         },
-        { name: 'section-url', type: 'text', label: 'Section URL', required: false },
+        { name: 'sectionUrl', type: 'text', label: 'Section URL', required: false },
         {
           name: 'links',
           type: 'array',

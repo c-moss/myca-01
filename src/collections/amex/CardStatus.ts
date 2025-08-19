@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const CardStatus: CollectionConfig = {
   slug: 'card-status',
   admin: {
-    useAsTitle: 'card-status-name',
+    useAsTitle: 'cardStatusName',
     description: 'Represents a card status e.g. Active, Suspended etc.',
     group: 'Amex',
   },
@@ -25,7 +25,7 @@ export const CardStatus: CollectionConfig = {
       },
     },
     {
-      name: 'card-status-name',
+      name: 'cardStatusName',
       type: 'text',
       label: 'Card status name',
       required: true,

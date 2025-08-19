@@ -44,7 +44,7 @@ export const TermsAndConditions: CollectionConfig = {
       required: true,
     },
     {
-      name: 'link-items',
+      name: 'linkItems',
       type: 'array',
       label: 'Links',
       fields: [

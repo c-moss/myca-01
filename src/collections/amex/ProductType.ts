@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const ProductType: CollectionConfig = {
   slug: 'product-type',
   admin: {
-    useAsTitle: 'product-type-name',
+    useAsTitle: 'productTypeName',
     description: 'Represents a product type e.g. Lending, Charge, Corporate, etc.',
     group: 'Amex',
   },
@@ -25,7 +25,7 @@ export const ProductType: CollectionConfig = {
       },
     },
     {
-      name: 'product-type-name',
+      name: 'productTypeName',
       type: 'text',
       label: 'Product type name',
       required: true,

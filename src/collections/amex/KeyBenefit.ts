@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const KeyBenefit: CollectionConfig = {
   slug: 'key-benefit',
   admin: {
-    useAsTitle: 'benefit-title',
+    useAsTitle: 'benefitTitle',
     description: 'Used to define the sections of the key benefits component.',
     group: 'Amex',
   },
@@ -25,19 +25,19 @@ export const KeyBenefit: CollectionConfig = {
       },
     },
     {
-      name: 'benefit-title',
+      name: 'benefitTitle',
       type: 'text',
       label: 'Benefit title',
       required: true,
     },
     {
-      name: 'benefit-body',
+      name: 'benefitBody',
       type: 'textarea',
       label: 'Benefit body',
       required: true,
     },
     {
-      name: 'embedded-links',
+      name: 'embeddedLinks',
       type: 'array',
       label: 'Embedded links',
       admin: {
@@ -45,7 +45,7 @@ export const KeyBenefit: CollectionConfig = {
       },
       fields: [
         {
-          name: 'embedded-link-text',
+          name: 'embeddedLinkText',
           type: 'text',
           label: 'Link text',
           required: true,

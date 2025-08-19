@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const CardType: CollectionConfig = {
   slug: 'card-type',
   admin: {
-    useAsTitle: 'card-type-name',
+    useAsTitle: 'cardTypeName',
     description: 'Represents a card type e.g. Primary or Supplementary.',
     group: 'Amex',
   },
@@ -25,7 +25,7 @@ export const CardType: CollectionConfig = {
       },
     },
     {
-      name: 'card-type-name',
+      name: 'cardTypeName',
       type: 'text',
       label: 'Card type name',
       required: true,

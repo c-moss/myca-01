@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const AccountStatus: CollectionConfig = {
   slug: 'account-status',
   admin: {
-    useAsTitle: 'account-status-name',
+    useAsTitle: 'accountStatusName',
     description: 'Represents an account status e.g. Active, Suspended etc.',
     group: 'Amex',
   },
@@ -25,7 +25,7 @@ export const AccountStatus: CollectionConfig = {
       },
     },
     {
-      name: 'account-status-name',
+      name: 'accountStatusName',
       type: 'text',
       label: 'Account status name',
       required: true,

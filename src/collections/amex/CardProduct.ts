@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const CardProduct: CollectionConfig = {
   slug: 'card-product',
   admin: {
-    useAsTitle: 'card-product-name',
+    useAsTitle: 'cardProductName',
     description: 'Represents a card product e.g. Centurion, Platinum, Gold, etc.',
     group: 'Amex',
   },
@@ -19,7 +19,7 @@ export const CardProduct: CollectionConfig = {
       },
     },
     {
-      name: 'card-product-name',
+      name: 'cardProductName',
       type: 'text',
       label: 'Card product name',
       required: true,
