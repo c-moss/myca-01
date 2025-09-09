@@ -108,6 +108,10 @@ export interface ImageAsset {
   id: string;
   name: string;
   imageAltText: string;
+  /**
+   * A searchable identifier for the image asset.
+   */
+  identifier?: string | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -437,6 +441,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ImageAssetsSelect<T extends boolean = true> {
   name?: T;
   imageAltText?: T;
+  identifier?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
