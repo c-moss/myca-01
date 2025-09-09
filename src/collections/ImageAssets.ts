@@ -42,5 +42,14 @@ export const ImageAssets: CollectionConfig = {
       label: 'Image Alt Text',
       required: true,
     },
+    {
+      name: 'identifier',
+      admin: {
+        description: 'A searchable identifier for the image asset.',
+      },
+      type: 'text',
+      label: 'Identifier',
+      required: false,
+    },
   ],
 }
