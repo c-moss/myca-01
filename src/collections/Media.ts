@@ -9,50 +9,29 @@ export const Media: CollectionConfig = {
     update: () => true,
   },
   admin: {
-    useAsTitle: 'name',
-    description: 'A single image asset that can be used in various places throughout the app.',
+    description:
+      'The Media Collection lets you easily track, manage and reuse image assets within your organization.',
   },
   timestamps: false,
   upload: {
-    staticDir: 'media',
-    imageSizes: [
-      {
-        name: 'thumbnail',
-        width: 50,
-        height: 50,
-        position: 'centre',
-      },
-      {
-        name: 'tile',
-        width: 150,
-        height: 150,
-        position: 'centre',
-      },
-    ],
-    adminThumbnail: 'thumbnail',
-    mimeTypes: ['image/*'],
+    mimeTypes: ['image/png', 'image/webp', 'application/pdf'],
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      label: 'Name',
-      required: true,
-    },
-    {
-      name: 'imageAltText',
-      type: 'text',
-      label: 'Image Alt Text',
-      required: true,
-    },
-    {
-      name: 'identifier',
-      admin: {
-        description: 'A searchable identifier for the image asset.',
-      },
-      type: 'text',
-      label: 'Identifier',
-      required: false,
+      name: 'meta',
+      type: 'group',
+      label: 'Meta Data',
+      fields: [
+        {
+          name: 'alt',
+          label: 'Alt',
+          type: 'text',
+        },
+        {
+          name: 'caption',
+          type: 'text',
+        },
+      ],
     },
   ],
 }

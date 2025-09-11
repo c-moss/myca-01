@@ -325,19 +325,17 @@ export interface LinksPage {
     | null;
 }
 /**
- * A single image asset that can be used in various places throughout the app.
+ * The Media Collection lets you easily track, manage and reuse image assets within your organization.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: string;
-  name: string;
-  imageAltText: string;
-  /**
-   * A searchable identifier for the image asset.
-   */
-  identifier?: string | null;
+  meta?: {
+    alt?: string | null;
+    caption?: string | null;
+  };
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -347,24 +345,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    tile?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -656,9 +636,12 @@ export interface LinksPageSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-  name?: T;
-  imageAltText?: T;
-  identifier?: T;
+  meta?:
+    | T
+    | {
+        alt?: T;
+        caption?: T;
+      };
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -668,30 +651,6 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        tile?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
